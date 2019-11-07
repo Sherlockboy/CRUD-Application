@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>Update page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="/style-other-btn.css">
+</head>
+<body>
+<h2>Updating user ...</h2>
+<div class="container" >
+  <form th:each="worker:${users}" style="border:none; padding: 10px 20px;" action="#" th:action="@{/update}"  method="post">
+    <label>
+      <input type="hidden" placeholder="Enter user id" required  name="id" th:value="${worker.id}">
+    </label>
+
+    <label><b>Full Name</b>
+      <input type="text" placeholder="Enter full name" required  name="name" th:value="${worker.name}">
+    </label>
+
+    <label><b>Position</b>
+      <input type="text" placeholder="Enter position" required  name="position" th:value="${worker.position}">
+    </label>
+
+    <p><button onclick="backToHome()" type="submit">Submit</button>
+      <button type="reset" value="Reset" >Reset</button></p>
+  </form>
+</div>
+<script>
+    function backToHome() {
+        alert("Updated Successfully!!!")
+    }
+</script>
+</body>
+</html>

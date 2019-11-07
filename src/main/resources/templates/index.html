@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome to Crud App</title>
+  <link rel="stylesheet" type="text/css" href="/style-index.css">
+</head>
+<body>
+
+<div class="head-section">
+  <a href="/add">
+    <button class="btn btn-add" style="display: inline-block; float: left; margin-left: 60px;">Add</button>
+  </a>
+  <a href="/deleteAll">
+    <button class="btn btn-add" style="display: inline-block; float: right; margin-right: 60px;">Delete All</button>
+  </a>
+
+</div>
+
+<div class="body-section">
+  <table>
+    <tr>
+      <th>User ID</th>
+      <th>Name</th>
+      <th>Position</th>
+      <th>Option</th>
+    </tr>
+
+    <tr th:each="worker: ${users}">
+      <td th:text="${worker.id}"></td>
+      <td th:text="${worker.name}"></td>
+      <td th:text="${worker.position}"></td>
+      <td>
+          <button type="submit" th:onclick="|update(${worker.id})|" class="btn btn-update btn-row" style="padding: 8px 10px;">Update</button>
+          <button type="submit" th:onclick="'del(\'' + ${worker.id} + '\');'" class="btn btn-delete btn-row" style="padding: 8px 10px;">Delete</button>
+      </td>
+      </td>
+    </tr>
+  </table>
+</div>
+<script>
+    function del(id) {
+        document.location = '/delete?id=' + id;
+    }
+    function update(id) {
+        window.location = '/update?id=' + id;
+    }
+</script>
+</body>
+</html>
